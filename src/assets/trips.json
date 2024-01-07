@@ -1,0 +1,121 @@
+[
+    {
+        "id": 1,
+        "name": "Wycieczka do Krakowa",
+        "tripTarget": "Polska",
+        "startDate": "2024-05-01",
+        "endDate": "2024-05-03",
+        "price": 1000,
+        "maxCapacity": 20,
+        "description": "Wycieczka do Krakowa, zwiedzanie miasta, noclegi w hotelu",
+        "image": "https://www.polska.travel/wp-content/uploads/2022/12/krakow_bazylika_mariacka_2_1170-1.jpg",
+        "rating": 3
+    },
+    {
+        "id": 4,
+        "name": "Wybrzeże Hiszpanii",
+        "tripTarget": "Hiszpania",
+        "startDate": "2024-07-06",
+        "endDate": "2024-07-14",
+        "price": 2000,
+        "maxCapacity": 20,
+        "description": "Wycieczka do Hiszpanii, plaza, słońce, morze",
+        "image": "https://www.spain.info/export/sites/segtur/.content/imagenes/cabeceras-grandes/cataluna/calella-palafrugell-costa-brava_s208688674.jpg",
+        "rating": 4
+    },
+    {
+        "id": 8,
+        "name": "Wycieczka po Paryżu",
+        "tripTarget": "Francja",
+        "startDate": "2024-09-05",
+        "endDate": "2024-09-10",
+        "price": 3200,
+        "maxCapacity": 15,
+        "description": "Zwiedzaj romantyczny Paryż, odwiedzaj zabytkowe miejsca, degustuj francuskie wina i kuchnię.",
+        "image": "https://content.api.news/v3/images/bin/780a0c0cd0a97a84cc1ed8e7bf4b6254?width=2048",
+        "rating": 5
+    },
+    {
+        "id": 2,
+        "name": "Wypad do Zakopanego",
+        "tripTarget": "Polska",
+        "startDate": "2024-06-10",
+        "endDate": "2024-06-12",
+        "price": 1200,
+        "maxCapacity": 15,
+        "description": "Wycieczka do Zakopanego, górskie widoki, noclegi w góralskim pensjonacie",
+        "image": "https://prezentokracja.pl/media/catalog/product/optimized/2/2/228a82b55dbe47f9478e169ff2db3751/lot-nad-zakopanem.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Spacer po Wrocławiu",
+        "tripTarget": "Polska",
+        "startDate": "2024-04-15",
+        "endDate": "2024-04-17",
+        "price": 800,
+        "maxCapacity": 25,
+        "description": "Krótka wycieczka do Wrocławia, zwiedzanie rynku, przejażdżka tramwajem wodnym",
+        "image": "https://ocdn.eu/pulscms-transforms/1/VPkk9kpTURBXy9hZmZmNGU1ODBjZmI5NGI4YTRmZWZlNjIxMTNjMzgzYy5qcGeTlQPNAe4AzRvHzQ-gkwXNAxTNAbyTCaZhYzI4ZDMG3gABoTAG/wroclaw.avif",
+        "rating": 3
+    },
+    
+    {
+        "id": 5,
+        "name": "Cuda Rzymu",
+        "tripTarget": "Włochy",
+        "startDate": "2024-06-05",
+        "endDate": "2024-06-12",
+        "price": 2500,
+        "maxCapacity": 15,
+        "description": "Odkryj starożytne cuda Rzymu, zwiedź Koloseum, Watykan i rozkoszuj się autentyczną kuchnią włoską.",
+        "image": "https://images.r.pl/zdjecia/lokalizacje/49/wlochy_49_90316_122144_1000x1000.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Przygoda w Tokio",
+        "tripTarget": "Japonia",
+        "startDate": "2024-08-15",
+        "endDate": "2024-08-22",
+        "price": 3000,
+        "maxCapacity": 12,
+        "description": "Doświadcz bogatej kultury Tokio, zwiedź historyczne świątynie i rozkoszuj się japońskimi przysmakami ulicznymi.",
+        "image": "https://img.freepik.com/free-photo/aerial-view-tokyo-cityscape-with-fuji-mountain-japan_335224-148.jpg?w=1800&t=st=1704548266~exp=1704548866~hmac=f67498dea079c95ad64b6ebb5aac7f34f9b1627e48d5adec839c221b565c20ae",
+        "rating": 4
+    },
+    {
+        "id": 7,
+        "name": "Ekspedycja Alp Szwajcarskich",
+        "tripTarget": "Szwajcaria",
+        "startDate": "2024-07-01",
+        "endDate": "2024-07-10",
+        "price": 3000,
+        "maxCapacity": 12,
+        "description": "Odkryj piękno Alp Szwajcarskich, wspinaj się po malowniczych szlakach i ciesz się tradycyjnymi potrawami szwajcarskimi.",
+        "image": "https://media.cntraveller.com/photos/611bf1ae042ccafe9a9ae6c1/master/pass/swissalps_cnt_24nov09_iStock_b.jpg"
+    },
+
+    {
+        "id": 9,
+        "name": "Magiczna wyspa Santorini",
+        "tripTarget": "Grecja",
+        "startDate": "2024-06-15",
+        "endDate": "2024-06-22",
+        "price": 2700,
+        "maxCapacity": 20,
+        "description": "Odkrywaj uroki magicznej wyspy Santorini, z białymi domami i lazurowym morzem w tle.",
+        "image": "https://a.cdn-hotels.com/gdcs/production18/d1838/041ae6b1-0a88-4c22-a648-53a22dd4a006.jpg",
+        "rating": 2
+    },
+    {
+        "id": 10,
+        "name": "Egipska odyseja piramid",
+        "tripTarget": "Egipt",
+        "startDate": "2024-08-10",
+        "endDate": "2024-08-18",
+        "price": 3500,
+        "maxCapacity": 15,
+        "description": "Przeżyj egipską odyseję, zwiedzaj piramidy, żegluj Nilu i poznawaj tajemnice starożytnego Egiptu.",
+        "image": "https://dcontent.inviacdn.net/shared/img/web-830/2023/8/27/m0/1836718.jpg",
+        "rating": 5
+    }    
+]

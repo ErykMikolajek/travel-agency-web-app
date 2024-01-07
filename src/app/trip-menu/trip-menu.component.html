@@ -1,0 +1,28 @@
+<div class="w-100 mx-0 d-flex flex-row px-0">
+  <aside class="bg-light p-4 d-flex flex-column">
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Waluta: {{ selectedCurrency }}
+      </button>
+      <ul class="dropdown-menu menu-z w-100">
+        <li (click)="selectCurrency('PLN')"><a class="dropdown-item">PLN</a></li>
+        <li (click)="selectCurrency('USD')"><a class="dropdown-item">USD</a></li>
+        <li (click)="selectCurrency('EUR')"><a class="dropdown-item">EUR</a></li>
+      </ul>
+    </div>
+    <app-filter class="sticky-top" [selectedCurrency]="selectedCurrency" [tripMaxPrice]="tripMaxPrice" [tripMinPrice]="tripMinPrice" [uniqueCountries]="uniqueCountries" (filter)="applyFilter($event)"></app-filter>
+  </aside>
+  <main class="w-100 flex-grow-1">
+    <div class="d-flex flex-row justify-content-end sticky-top">
+      <div [ngClass]="reservedTripDataService.howManyReserved() >= 10 ? 'bg-primary' : 'bg-danger'" class="badge text-wrap fs-6 my-2">
+        Sumaryczna ilość zarezerwowanych miejsc: {{ reservedTripDataService.howManyReserved()  }}
+      </div>
+      <div [ngClass]="reservedTripDataService.howManyReserved()  >= 10 ? 'bg-primary' : 'bg-danger'" class="badge text-wrap fs-6 my-2 mx-1">
+        Łączna kwota rezerwacji: {{ reservedTripDataService.reservedTripsSumValue() | currency:selectedCurrency:'symbol-narrow' }}
+      </div>
+    </div>
+    <div *ngFor="let trip of (trips | selectedCountries:selectedCountries:maxPriceSelected:startDateSelected:endDateSelected:ratingSelected)" class="mb-4">
+      <app-trip [selectedCurrency]="selectedCurrency" [maxPrice]="tripMaxPrice" [minPrice]="tripMinPrice" [trip]="trip" (addReservation)="reservedTripDataService.addTrip($event)" (deleteReservation)="reservedTripDataService.removeTrip($event)" (deleteCurrentTrip)="deleteTrip($event)"></app-trip>
+    </div>
+  </main>
+</div>

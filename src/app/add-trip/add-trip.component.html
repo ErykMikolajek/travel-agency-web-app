@@ -1,0 +1,38 @@
+<div class="container shadow-sm col-10 bg-light position-relative p-3 d-flex flex-column justify-content-center align-items-center">
+    <h2>Dodaj nową wycieczkę</h2>
+    <form>
+        <div class="mb-3">
+          <label for="tripName" class="form-label">Nazwa wycieczki</label>
+          <input [(ngModel)]="newTrip.name" name="name" type="text" class="form-control" id="tripName" required>
+        </div>
+        <div class="mb-3">
+          <label for="targetCountry" class="form-label">Kraj destynacji</label>
+          <input [(ngModel)]="newTrip.tripTarget" name="tripTarget" type="text" class="form-control" id="targetCountry" required>
+        </div>
+        <div class="mb-3">
+            <label for="leaveDate" class="form-label">Data wyjazdu</label>
+            <input [(ngModel)]="newTrip.startDate" name="startDate" type="date" class="form-control" id="leaveDate">
+        </div>
+        <div class="mb-3">
+            <label for="arrivalDate" class="form-label">Data powrotu</label>
+            <input [(ngModel)]="newTrip.endDate" name="endDate" type="date" class="form-control" id="arrivalDate">
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Cena</label>
+            <input [(ngModel)]="newTrip.price" name="price" type="number" class="form-control" id="price" placeholder="">
+        </div>
+        <div class="mb-3">
+            <label for="capacity" class="form-label">Liczba miejsc</label>
+            <input [(ngModel)]="newTrip.maxCapacity" name="maxCapacity" type="number" class="form-control" id="capacity">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Opis</label>
+            <textarea [(ngModel)]="newTrip.description" name="description" type="text" class="form-control" id="description"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="urlLink" class="form-label">Link do zdjęcia</label>
+            <input [(ngModel)]="newTrip.image" name="image" type="text" class="form-control" id="urlLink">
+        </div>
+        <button type="submit" class="btn btn-primary col-12" (click)="addTrip()">Dodaj</button>
+    </form>
+</div>

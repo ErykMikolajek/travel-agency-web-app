@@ -1,0 +1,43 @@
+<div class="container col-12 d-flex align-items-center justify-content-center">
+    <div [ngClass]="trip.price === maxPrice ? 'border rounded border-success-subtle' : trip.price === minPrice ?'border rounded border-danger-subtle' : 'border rounded border-0'" class="shadow-sm col-10 bg-light position-relative p-3">
+        <div [style.visibility]="trip.maxCapacity <= 0 ? 'visible' : 'hidden'" class="position-absolute sold-content bg-secondary opacity-75 d-flex justify-content-center align-items-center"> <p class=" fs-3 fw-bold text-light"> WYPRZEDANE </p> </div>
+        <h3 class="pt-4"> {{ trip.name | uppercase }} </h3>
+        <div class="d-flex flex-row align-items-center trip-content">
+            <img [src]=trip.image class="img-fluid rounded-circle img-thumbnail">
+            <div class="d-flex flex-column justify-content-center px-4 flex-grow-1">
+                <p> <strong>Kraj docelowy:</strong> {{ trip.tripTarget | uppercase }}</p>
+                <p> <strong>Czas trwania:</strong> {{ trip.startDate }} - {{ trip.endDate }}</p>
+                <p> <strong>Opis:</strong> {{ trip.description }} </p>
+                <p> <strong>Ocena: </strong> 
+                    <i *ngFor="let star of stars" [ngClass]="star > trip.rating ? 'bi bi-star rating' : 'bi bi-star-fill rating'"></i>
+                </p>
+                <p> <strong>Cena:</strong> {{ trip.price | currency:selectedCurrency:'symbol-narrow' }}</p>
+                <p [ngClass]="{'text-danger': trip.maxCapacity <= 3}"> <strong>Ilość miejsc:</strong> {{ trip.maxCapacity }} </p>
+            </div>
+            <div class="d-flex flex-column align-items-center justify-content-between px-4 keep-active h-100">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <p class="fw-bold text-center">Oceń wycieczkę:</p>
+                    <div class="rating d-flex justify-content-center" (mouseleave)="colorStars(0)">
+                        <i [ngClass]="starsRating > 0 ? 'bi bi-star-fill' : 'bi bi-star'" (mouseenter)="colorStars(1)" (click)="confirmStars(1)"></i>
+                        <i [ngClass]="starsRating > 1 ? 'bi bi-star-fill' : 'bi bi-star'" (mouseenter)="colorStars(2)" (click)="confirmStars(2)"></i>
+                        <i [ngClass]="starsRating > 2 ? 'bi bi-star-fill' : 'bi bi-star'" (mouseenter)="colorStars(3)" (click)="confirmStars(3)"></i>
+                        <i [ngClass]="starsRating > 3 ? 'bi bi-star-fill' : 'bi bi-star'" (mouseenter)="colorStars(4)" (click)="confirmStars(4)"></i>
+                        <i [ngClass]="starsRating > 4 ? 'bi bi-star-fill' : 'bi bi-star'" (mouseenter)="colorStars(5)" (click)="confirmStars(5)"></i>
+                    </div>
+                </div>
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <p class="fw-bold text-center">Rezerwuj miejsca:</p>
+                    <div class="d-flex flex-row">
+                    <button *ngIf="reserved > 0" class="btn btn-primary mx-1 custom-size" (click)="remove()">-</button>
+                    <button *ngIf="trip.maxCapacity > 0" class="btn btn-primary custom-size" (click)="add()">+</button>
+                    </div>
+                    <p [style.visibility]="reserved > 0 ? 'visible' : 'hidden'" class="fs-6 text-center"> {{ reserved }} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary mx-4 trash-button" (click)="deleteTrip()">
+        <i class="bi bi-trash-fill"></i>
+    </button>
+</div>
+

@@ -1,0 +1,16 @@
+<nav class="d-flex flex-row bg-light border-bottom">
+    <div class="d-flex flex-row">
+        <a class="nav-link p-3" routerLinkActive="active-link" routerLink="/home"><i class="bi bi-house-fill px-1"></i>Home</a>
+        <a class="nav-link p-3" routerLinkActive="active-link" routerLink="/trips">Wycieczki</a> 
+        <a class="nav-link p-3" routerLinkActive="active-link" routerLink="/add-trip">Dodaj nową wycieczkę</a>
+    </div>
+    <div class="d-flex flex-row ms-auto">
+        <a class="nav-link p-3" routerLinkActive="active-link" routerLink="/basket">Koszyk<i class="bi bi-cart4 px-1"></i>
+        <button class="btn btn-outline-primary btn-sm" *ngIf="reservedTripDataService.howManyReserved() > 0">
+            Liczba miejsc: {{reservedTripDataService.howManyReserved()}} | Cena: {{reservedTripDataService.reservedTripsSumValue() | currency:'PLN':'symbol-narrow'}}
+        </button>
+        </a>
+        <a class="nav-link p-3" routerLinkActive="active-link" routerLink="/history">Historia zamówień</a>
+    </div>
+</nav>
+<router-outlet></router-outlet>

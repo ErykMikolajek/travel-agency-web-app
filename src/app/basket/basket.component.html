@@ -1,0 +1,6 @@
+<div class="w-100 d-flex flex-column align-items-center mt-5">
+    <h1 *ngIf="reservedTripsDataService.howManyReserved() <= 0">Koszyk jest pusty</h1>
+    <div *ngFor="let trip of reservedTrips" class="mb-4">
+    <app-trip [trip]="trip"></app-trip>
+    </div>
+</div>

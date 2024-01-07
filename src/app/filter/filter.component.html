@@ -1,0 +1,55 @@
+<h5 class="mt-3 text-center">Filtrowanie:</h5>
+<div class="w-100 d-flex flex-column">
+    <h6>Kraj docelowy:</h6>
+    <div class="form-check" *ngFor="let country of uniqueCountries">
+        <input (change)="modifyCountriesSelected(country)" class="form-check-input" type="checkbox" value={{country}} id="flexCheckDefault" checked>
+        <label class="form-check-label" for="flexCheckDefault">{{country}}</label>
+    </div>
+    <h6 class="mt-3 mb-0">Cena do: <small>{{maxPriceSelected | currency:selectedCurrency:'symbol-narrow'}}</small></h6>
+    <input [(ngModel)]="maxPriceSelected" type="range" class="form-range" min={{tripMinPrice}} max={{tripMaxPrice}}  id="priceRange" (ngModelChange)="emitFilter()">
+    <div class="d-flex justify-content-between">
+    <label class="" for="priceRange" class="form-label">{{tripMinPrice | currency:selectedCurrency:'symbol-narrow'}}</label>
+    <label class="mr-auto" for="priceRange" class="form-label">{{tripMaxPrice | currency:selectedCurrency:'symbol-narrow'}}</label>
+    </div>
+    <h6 class="mt-3 mb-0">Data:</h6>
+    <div class="d-flex justify-content-between">
+    <div>
+        <label for="dateFrom" class="form-label mb-0">Od:</label>
+        <input [(ngModel)]="startDateSelected" type="date" class="form-control form-control-sm" id="dateFrom" (ngModelChange)="emitFilter()">
+    </div>
+    <div>
+        <label for="dateTo" class="form-label mb-0">Do:</label>
+        <input [(ngModel)]="endDateSelected" type="date" class="form-control form-control-sm" id="dateTo" (ngModelChange)="emitFilter()">
+    </div>
+    </div>
+    <h6 class="mt-3 mb-0">Ocena:</h6>
+    <div class="form-check">
+    <input (change)="modifyRatingSelected(1)" class="form-check-input" type="checkbox" value="1star" id="1star" checked>
+    <label class="form-check-label rating" for="1star">
+        <i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
+    </label>
+    </div>
+    <div class="form-check">
+    <input (change)="modifyRatingSelected(2)" class="form-check-input" type="checkbox" value="1star" id="1star" checked>
+    <label class="form-check-label rating" for="1star">
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
+    </label>
+    </div>
+    <div class="form-check">
+    <input (change)="modifyRatingSelected(3)" class="form-check-input" type="checkbox" value="1star" id="1star" checked>
+    <label class="form-check-label rating" for="1star">
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
+    </label>
+    </div>
+    <div class="form-check">
+    <input (change)="modifyRatingSelected(4)" class="form-check-input" type="checkbox" value="1star" id="1star" checked>
+    <label class="form-check-label rating" for="1star">
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+    </label>
+    </div>
+    <div class="form-check">
+    <input (change)="modifyRatingSelected(5)" class="form-check-input" type="checkbox" value="1star" id="1star" checked (input)="emitFilter()">
+    <label class="form-check-label rating" for="1star">
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+    </label>
+</div>

@@ -1,0 +1,44 @@
+img {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+}
+p {
+    margin: 2px;
+}
+.trip-content {
+    height: 250px;
+}
+.sold-content {
+    height: 100%;
+    width: calc(100% + 1.5rem);
+    margin-left: -1.5rem;
+}
+.custom-size {
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+}
+.keep-active{
+    z-index: 10;
+    min-width: 20%;
+}
+.trash-button{
+    width: 50px;
+    height: 50px;
+}
+.rating {
+    color: #f0ad4e;
+}
+
+@media only screen and (max-width: 875px) {
+    img {
+        height: 150px;
+        width: 150px;
+        object-fit: cover;
+    }
+    p {
+        margin: 0;
+        font-size: 10px;
+    }
+  }
