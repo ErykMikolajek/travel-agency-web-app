@@ -1,5 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CurrencyDataService } from '../currency-data.service';
+import { ReservedTripsService } from '../reserved-trips.service';
 
 @Component({
   selector: 'app-trip',
@@ -10,32 +12,30 @@ import { CommonModule } from '@angular/common';
 })
 export class TripComponent implements OnChanges {
 
+  constructor(public currencyDataService: CurrencyDataService, public reservedTripsDataService: ReservedTripsService) {}
+
   @Input() trip: any;
   @Input() maxPrice: number = 0;
   @Input() minPrice: number = 0;
-  @Input() selectedCurrency: string = 'PLN';
-  firstPrice: number = 0;
-  eurToPlnRate: number = 4.3;
-  dollarToPlnRate: number = 3.8;
-  eurToDollarRate: number = 1.1;
+  @Input() isInBasket: boolean = false;
+  @Input() isInBought: boolean = false;
+
   reserved: number = 0;
   stars = [1, 2, 3, 4, 5];
-  @Output() addReservation = new EventEmitter<number>();
-  @Output() deleteReservation = new EventEmitter<number>();
   @Output() deleteCurrentTrip = new EventEmitter<number>();
 
   add() {
     if (this.trip.maxCapacity > 0){
     this.trip.maxCapacity--;
     this.reserved++;
-    this.addReservation.emit(this.trip.id);
+    this.reservedTripsDataService.addTrip(this.trip.id);
     }
   }
   remove() {
     if (this.reserved > 0){
       this.trip.maxCapacity++;
       this.reserved--;
-      this.deleteReservation.emit(this.trip.id);
+      this.reservedTripsDataService.removeTrip(this.trip.id);
     }
   }
   deleteTrip(){
@@ -43,15 +43,8 @@ export class TripComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes["selectedCurrency"].firstChange === true) this.firstPrice = this.trip.price;
-    if (changes["selectedCurrency"].firstChange === false) {
-      if (changes["selectedCurrency"].previousValue === 'PLN') {
-        this.trip.price = this.trip.price / (changes["selectedCurrency"].currentValue === 'EUR' ? this.eurToPlnRate : this.dollarToPlnRate);
-      } else if (changes["selectedCurrency"].previousValue === 'USD') {
-        this.trip.price = changes["selectedCurrency"].currentValue === 'PLN' ? this.firstPrice : this.trip.price / this.eurToDollarRate;
-      } else {
-        this.trip.price = changes["selectedCurrency"].currentValue === 'PLN' ? this.firstPrice : this.trip.price * this.eurToDollarRate;
-      }
+    if (changes['trip'].firstChange === true) {
+      this.reserved = this.reservedTripsDataService.getReservedTrips().get(this.trip.id) || 0;
     }
   }
   

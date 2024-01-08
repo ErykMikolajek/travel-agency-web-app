@@ -3,28 +3,39 @@ import { CommonModule } from '@angular/common';
 import { ReservedTripsService } from '../reserved-trips.service';
 import { TripDataService } from '../trip-data.service';
 import { TripComponent } from '../trip/trip.component';
+import { CurrencyDataService } from '../currency-data.service';
+import { ReservedTripsPipe } from './reserved-trips.pipe';
 
 @Component({
   selector: 'app-basket',
   standalone: true,
-  imports: [CommonModule, TripComponent],
+  imports: [CommonModule, TripComponent, ReservedTripsPipe],
   templateUrl: './basket.component.html',
   styleUrl: './basket.component.css'
 })
 export class BasketComponent {
-  reservedTrips: any[] = [];
   allTrips: any = [];
+  checkedTripsId: number[] = [];
 
-  constructor(private allTripsDataService: TripDataService, public reservedTripsDataService: ReservedTripsService) {}  
+  constructor(private allTripsDataService: TripDataService, public reservedTripsDataService: ReservedTripsService, public curencyDataService: CurrencyDataService) {}  
 
-  public async initializeData() {
-    this.allTrips = await this.allTripsDataService.getTrips().toPromise();
+  ngOnInit() {
+    this.allTripsDataService.getTrips().subscribe((data: any) => {
+      this.allTrips = data;
+    });
+    this.checkedTripsId = Array.from(this.reservedTripsDataService.getReservedTrips().keys());
   }
-  async ngOnInit() {
-    await this.initializeData();
-    let reserved = Array.from(this.reservedTripsDataService.getReservedTrips().keys());
-    this.reservedTrips = this.allTrips.filter((trip: any) => reserved.includes(trip.id));
+
+  modifyReservationsSelected(id: number) {
+    if (this.checkedTripsId.includes(id)) {
+      this.checkedTripsId = this.checkedTripsId.filter((item: number) => item !== id);
+    } else {
+      this.checkedTripsId.push(id);
+    }
   }
 
-  
+  buyTrips() {
+    this.reservedTripsDataService.buyTrips(this.checkedTripsId);
+    this.checkedTripsId = [];
+  }
 }

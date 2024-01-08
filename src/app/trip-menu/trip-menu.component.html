@@ -2,7 +2,7 @@
   <aside class="bg-light p-4 d-flex flex-column">
     <div class="dropdown">
       <button class="btn btn-primary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Waluta: {{ selectedCurrency }}
+        Waluta: {{ curencyDataService.getCurrency() }}
       </button>
       <ul class="dropdown-menu menu-z w-100">
         <li (click)="selectCurrency('PLN')"><a class="dropdown-item">PLN</a></li>
@@ -10,19 +10,20 @@
         <li (click)="selectCurrency('EUR')"><a class="dropdown-item">EUR</a></li>
       </ul>
     </div>
-    <app-filter class="sticky-top" [selectedCurrency]="selectedCurrency" [tripMaxPrice]="tripMaxPrice" [tripMinPrice]="tripMinPrice" [uniqueCountries]="uniqueCountries" (filter)="applyFilter($event)"></app-filter>
+    <app-filter class="sticky-top" [tripMaxPrice]="getTripsMaxPrice()" [tripMinPrice]="getTripsMinPrice()" [uniqueCountries]="uniqueCountries" (filter)="applyFilter($event)"></app-filter>
   </aside>
   <main class="w-100 flex-grow-1">
     <div class="d-flex flex-row justify-content-end sticky-top">
       <div [ngClass]="reservedTripDataService.howManyReserved() >= 10 ? 'bg-primary' : 'bg-danger'" class="badge text-wrap fs-6 my-2">
-        Sumaryczna ilość zarezerwowanych miejsc: {{ reservedTripDataService.howManyReserved()  }}
+        Liczba zarezerwowanych miejsc: {{ reservedTripDataService.howManyReserved()  }}
       </div>
       <div [ngClass]="reservedTripDataService.howManyReserved()  >= 10 ? 'bg-primary' : 'bg-danger'" class="badge text-wrap fs-6 my-2 mx-1">
-        Łączna kwota rezerwacji: {{ reservedTripDataService.reservedTripsSumValue() | currency:selectedCurrency:'symbol-narrow' }}
+        Łączna kwota rezerwacji: {{ reservedTripDataService.reservedTripsSumValue() | currency:curencyDataService.getCurrency():'symbol-narrow' }}
       </div>
     </div>
-    <div *ngFor="let trip of (trips | selectedCountries:selectedCountries:maxPriceSelected:startDateSelected:endDateSelected:ratingSelected)" class="mb-4">
-      <app-trip [selectedCurrency]="selectedCurrency" [maxPrice]="tripMaxPrice" [minPrice]="tripMinPrice" [trip]="trip" (addReservation)="reservedTripDataService.addTrip($event)" (deleteReservation)="reservedTripDataService.removeTrip($event)" (deleteCurrentTrip)="deleteTrip($event)"></app-trip>
+    <h1 class="text-center mt-5" *ngIf="(trips | selectedCountries:selectedCountries:maxPriceSelected:startDateSelected:endDateSelected:ratingSelected:(curencyDataService.getCurrency())).length === 0">Nie znaleziono wycieczek spełniających wymagania</h1>
+    <div *ngFor="let trip of (trips | selectedCountries:selectedCountries:maxPriceSelected:startDateSelected:endDateSelected:ratingSelected:(curencyDataService.getCurrency()))" class="mb-4">
+      <app-trip [maxPrice]="tripMaxPrice" [minPrice]="tripMinPrice" [trip]="trip" (deleteCurrentTrip)="deleteTrip($event)"></app-trip>
     </div>
   </main>
 </div>

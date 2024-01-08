@@ -9,6 +9,7 @@ import { BasketComponent } from './basket/basket.component';
 import { HistoryComponent } from './history/history.component';
 import { ReservedTripsService } from './reserved-trips.service';
 import { TripDataService } from './trip-data.service';
+import { CurrencyDataService } from './currency-data.service';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,9 @@ import { TripDataService } from './trip-data.service';
   imports: [TripMenuComponent, TripComponent, HomeComponent, BasketComponent, HistoryComponent, CommonModule, RouterOutlet, RouterLink, RouterLinkActive, HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  providers: [TripDataService, ReservedTripsService]
+  providers: [TripDataService, ReservedTripsService, CurrencyDataService]
 })
 export class AppComponent {
   
-  constructor(public reservedTripDataService: ReservedTripsService) { }
+  constructor(public reservedTripDataService: ReservedTripsService, public currencyDataService: CurrencyDataService) { }
 }

@@ -1,1 +1,5 @@
-<p>history works!</p>
+<h1 *ngIf="reservedTripsDataService.getBoughtTrips().size == 0" class="text-center mt-5">Nie zakupiłeś jeszcze żadnej wycieczki. <h3>Kup coś, a następnie tu wróć, aby zobaczyć historię swoich zamówień.</h3></h1>
+<h1 *ngIf="reservedTripsDataService.getBoughtTrips().size > 0" class="text-center mt-5">Zakupione wycieczki:</h1>
+<div *ngFor="let trip of (allTrips | reservedTrips:this.reservedTripsDataService.getBoughtTrips())">
+    <app-trip class="p-4" [isInBought]="true" [trip]="trip"></app-trip>
+</div>
