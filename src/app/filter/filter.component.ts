@@ -1,23 +1,18 @@
 import { Component, Input, Output, OnChanges, OnInit, EventEmitter, SimpleChanges } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { CurrencyDataService } from '../currency-data.service';
+import { CurrencyDataService } from '../services/currency-data.service';
 
 @Component({
   selector: 'app-filter',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.css'
 })
-export class FilterComponent implements OnChanges {
+export class FilterComponent implements OnChanges{
 
   constructor(public currencyDataService: CurrencyDataService) {}
 
   @Input() tripMaxPrice: number = 0;
   @Input() tripMinPrice: number = 0;
   @Input() uniqueCountries: any = [];
-  // @Input() selectedCurrency = 'PLN';
 
   countriesSelected: string[] = [];
   maxPriceSelected: number = this.tripMaxPrice;
@@ -35,7 +30,6 @@ export class FilterComponent implements OnChanges {
       endDate: this.endDateSelected,
       rating: this.ratingSelected
     });
-    console.log(this.countriesSelected);
   }
 
   modifyCountriesSelected(country: string) {

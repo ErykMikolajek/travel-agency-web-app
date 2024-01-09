@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TripDataService } from '../trip-data.service';
+import { TripDataService } from '../services/trip-data.service';
 
 @Component({
   selector: 'app-add-trip',
-  standalone: true,
-  imports: [FormsModule],
   templateUrl: './add-trip.component.html',
   styleUrl: './add-trip.component.css'
 })

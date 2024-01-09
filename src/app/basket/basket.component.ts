@@ -1,15 +1,10 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReservedTripsService } from '../reserved-trips.service';
-import { TripDataService } from '../trip-data.service';
-import { TripComponent } from '../trip/trip.component';
-import { CurrencyDataService } from '../currency-data.service';
-import { ReservedTripsPipe } from './reserved-trips.pipe';
+import { ReservedTripsService } from '../services/reserved-trips.service';
+import { TripDataService } from '../services/trip-data.service';
+import { CurrencyDataService } from '../services/currency-data.service';
 
 @Component({
   selector: 'app-basket',
-  standalone: true,
-  imports: [CommonModule, TripComponent, ReservedTripsPipe],
   templateUrl: './basket.component.html',
   styleUrl: './basket.component.css'
 })

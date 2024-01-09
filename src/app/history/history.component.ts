@@ -1,14 +1,9 @@
-import { TripDataService } from './../trip-data.service';
-import { ReservedTripsService } from './../reserved-trips.service';
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReservedTripsPipe } from '../basket/reserved-trips.pipe';
-import { TripComponent } from '../trip/trip.component';
+import { TripDataService } from '../services/trip-data.service';
+import { ReservedTripsService } from '../services/reserved-trips.service';
 
 @Component({
   selector: 'app-history',
-  standalone: true,
-  imports: [ReservedTripsPipe, CommonModule, TripComponent],
   templateUrl: './history.component.html',
   styleUrl: './history.component.css'
 })

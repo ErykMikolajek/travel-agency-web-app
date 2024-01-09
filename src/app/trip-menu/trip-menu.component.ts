@@ -1,18 +1,10 @@
-import { TripDataService } from '../trip-data.service';
+import { TripDataService } from '../services/trip-data.service';
+import { ReservedTripsService } from '../services/reserved-trips.service';
+import { CurrencyDataService } from '../services/currency-data.service';
 import { Component} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { TripComponent } from '../trip/trip.component';
-import { FilterComponent } from '../filter/filter.component';
-import { SelectedCountriesPipe } from './selected-countries.pipe';
-import { ReservedTripsService } from '../reserved-trips.service';
-import { CurrencyDataService } from '../currency-data.service';
-import { max } from 'rxjs';
 
 @Component({
   selector: 'app-trip-menu',
-  standalone: true,
-  imports: [CommonModule, TripComponent, FormsModule, FilterComponent, SelectedCountriesPipe],
   templateUrl: './trip-menu.component.html',
   styleUrl: './trip-menu.component.css',
 })

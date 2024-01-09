@@ -1,17 +1,13 @@
-import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CurrencyDataService } from '../currency-data.service';
-import { ReservedTripsService } from '../reserved-trips.service';
+import { Component, OnChanges, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { CurrencyDataService } from '../services/currency-data.service';
+import { ReservedTripsService } from '../services/reserved-trips.service';
 
 @Component({
   selector: 'app-trip',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './trip.component.html',
   styleUrl: './trip.component.css'
 })
 export class TripComponent implements OnChanges {
-
   constructor(public currencyDataService: CurrencyDataService, public reservedTripsDataService: ReservedTripsService) {}
 
   @Input() trip: any;
@@ -64,5 +60,4 @@ export class TripComponent implements OnChanges {
       this.starsRating = stars;
     }
   }
-
 }

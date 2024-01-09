@@ -27,8 +27,6 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true
-  },
+    "strictTemplates": true
+  }
 }

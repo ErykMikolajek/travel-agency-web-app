@@ -1,25 +1,12 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
-import { TripMenuComponent } from './trip-menu/trip-menu.component';
-import { TripComponent } from './trip/trip.component';
-import { HomeComponent } from './home/home.component';
-import { BasketComponent } from './basket/basket.component';
-import { HistoryComponent } from './history/history.component';
-import { ReservedTripsService } from './reserved-trips.service';
-import { TripDataService } from './trip-data.service';
-import { CurrencyDataService } from './currency-data.service';
+import { CurrencyDataService } from './services/currency-data.service';
+import { ReservedTripsService } from './services/reserved-trips.service';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [TripMenuComponent, TripComponent, HomeComponent, BasketComponent, HistoryComponent, CommonModule, RouterOutlet, RouterLink, RouterLinkActive, HttpClientModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  providers: [TripDataService, ReservedTripsService, CurrencyDataService]
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
-  
-  constructor(public reservedTripDataService: ReservedTripsService, public currencyDataService: CurrencyDataService) { }
+  constructor(public reservedTripDataService: ReservedTripsService, public currencyDataService: CurrencyDataService) {}
 }

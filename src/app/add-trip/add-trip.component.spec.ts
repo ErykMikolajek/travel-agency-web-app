@@ -8,7 +8,7 @@ describe('AddTripComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AddTripComponent]
+      declarations: [AddTripComponent]
     })
     .compileComponents();
     
