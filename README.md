@@ -1,6 +1,6 @@
-# BiuroTurystyczne
+# Travel agency web app
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
+Basic Angular travel agency web app. This application has been created as a learning project to develop skills in Angular and web development.
 
 ## Development server
 
